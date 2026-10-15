@@ -57,7 +57,7 @@ model:
   box_head: true
   box_head_dim: 128
   dropout: 0.1
-  box_strides: [1]
+  box_strides: [1, 2]
 
 train:
   mode: linear          # linear | lora | full
@@ -84,7 +84,8 @@ train:
   lora_rank: 8
   lora_alpha: 16
   lora_dropout: 0.0
-  lora_targets: [query, key, value, dense]
+  lora_targets: [q_proj, k_proj, v_proj, o_proj, query, key, value, dense]
+  lora_impl: native
 
 eval:
   batch_size: 4

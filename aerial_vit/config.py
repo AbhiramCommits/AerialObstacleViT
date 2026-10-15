@@ -165,7 +165,19 @@ class TrainCfg:
     lora_rank: int = 8
     lora_alpha: int = 16
     lora_dropout: float = 0.0
-    lora_targets: list[str] = field(default_factory=lambda: ["query", "key", "value", "dense"])
+    lora_targets: list[str] = field(
+        default_factory=lambda: [
+            "q_proj",
+            "k_proj",
+            "v_proj",
+            "o_proj",
+            "query",
+            "key",
+            "value",
+            "dense",
+        ]
+    )
+    lora_impl: str = "native"  # native | peft
 
 
 @dataclass

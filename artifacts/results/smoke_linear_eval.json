@@ -1,0 +1,198 @@
+{
+  "miou": 0.271753,
+  "pixel_accuracy": 0.737524,
+  "frequency_weighted_iou": 0.660464,
+  "per_class_iou": {
+    "background": 0.111413,
+    "paved-area": 0.347771,
+    "grass": 0.778901,
+    "roof": 0.497217,
+    "tree": 0.143037,
+    "water": 0.189002,
+    "person": 0.014837,
+    "vehicle": 0.091845
+  },
+  "classes_in_eval": 8,
+  "n_pixels": 401408,
+  "confusion_matrix": [
+    [
+      3325,
+      543,
+      1305,
+      808,
+      186,
+      1962,
+      0,
+      692
+    ],
+    [
+      4480,
+      18339,
+      6183,
+      1232,
+      253,
+      94,
+      43,
+      1103
+    ],
+    [
+      10486,
+      20212,
+      244525,
+      7169,
+      3632,
+      1147,
+      0,
+      15403
+    ],
+    [
+      611,
+      19,
+      780,
+      20902,
+      5,
+      828,
+      0,
+      2052
+    ],
+    [
+      3904,
+      204,
+      2071,
+      5334,
+      3746,
+      2225,
+      0,
+      4197
+    ],
+    [
+      1510,
+      0,
+      890,
+      2182,
+      395,
+      2729,
+      0,
+      477
+    ],
+    [
+      32,
+      0,
+      106,
+      51,
+      35,
+      0,
+      10,
+      397
+    ],
+    [
+      0,
+      28,
+      27,
+      65,
+      2,
+      0,
+      0,
+      2472
+    ]
+  ],
+  "class_names": [
+    "background",
+    "paved-area",
+    "grass",
+    "roof",
+    "tree",
+    "water",
+    "person",
+    "vehicle"
+  ],
+  "landing_zone_iou": 0.850077,
+  "landing_zone_f1": 0.918964,
+  "landing_zone_precision": 0.979768,
+  "landing_zone_recall": 0.865265,
+  "landing_zone_accuracy": 0.87291,
+  "landing_zone_tp": 289259,
+  "landing_zone_fp": 5973,
+  "landing_zone_fn": 45042,
+  "landing_zone_tn": 61134,
+  "det_map": 0.0,
+  "det_map_50": 0.0,
+  "det_map_75": 0.0,
+  "det_n_gt": 96,
+  "det_n_pred": 0,
+  "det_n_images": 8,
+  "det_eval_classes": [
+    "background",
+    "paved-area",
+    "grass",
+    "roof",
+    "tree",
+    "water",
+    "person",
+    "vehicle"
+  ],
+  "det_per_class_ap50": {
+    "background": null,
+    "paved-area": null,
+    "grass": null,
+    "roof": null,
+    "tree": null,
+    "water": null,
+    "person": null,
+    "vehicle": null
+  },
+  "det_n_gt_per_class": {
+    "background": 0,
+    "paved-area": 0,
+    "grass": 0,
+    "roof": 21,
+    "tree": 33,
+    "water": 0,
+    "person": 14,
+    "vehicle": 28
+  },
+  "rare_classes": [
+    "person",
+    "vehicle"
+  ],
+  "rare_map": 0.0,
+  "rare_map_50": 0.0,
+  "rare_per_class_ap50": {
+    "person": null,
+    "vehicle": null
+  },
+  "run_name": "smoke_linear",
+  "checkpoint": "/Users/abhiramkasireddi/AerialObstacleViT/artifacts/runs/smoke_linear/best.pt",
+  "split": "test",
+  "split_size": 8,
+  "mode": "linear",
+  "adaptation": {
+    "mode": "linear",
+    "lora_impl": null,
+    "total_params": 22665237,
+    "trainable_params": 608661,
+    "frozen_params": 22056576,
+    "trainable_pct": 2.6854,
+    "head_params": 608661,
+    "backbone_params": 22056576
+  },
+  "device": "apple-mps (Metal Performance Shaders)",
+  "inference_seconds": 0.3,
+  "ms_per_image": 37.5393,
+  "fps": 26.639,
+  "image_size": [
+    224,
+    224
+  ],
+  "classes": [
+    "background",
+    "paved-area",
+    "grass",
+    "roof",
+    "tree",
+    "water",
+    "person",
+    "vehicle"
+  ],
+  "config_path": "configs/taxonomy.yaml"
+}
