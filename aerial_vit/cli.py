@@ -39,7 +39,15 @@ def _register() -> None:
                 f"[warn] command '{cmd_name}' unavailable: {type(exc).__name__}: {exc}", err=True
             )
             continue
-        app.add_typer(module.app, name=cmd_name)
+        callback = getattr(module, "main", None)
+        if callable(callback):
+            # Lift the single-command callback onto the root app under the
+            # hyphenated name.  Registering the sub-app with `add_typer` would
+            # nest it as `aerialvit <cmd> main ...` instead.
+            help_text = (callback.__doc__ or "").strip().split("\n")[0] or None
+            app.command(name=cmd_name, help=help_text)(callback)
+        else:
+            app.add_typer(module.app, name=cmd_name)
 
 
 _register()

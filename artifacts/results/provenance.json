@@ -1,0 +1,31 @@
+{
+  "generated_utc": "2026-10-15 09:12:30 UTC",
+  "date": "2026-10-15",
+  "python": "3.11.14",
+  "platform": "macOS-27.0.1-arm64-arm-64bit",
+  "machine": "arm64",
+  "cpu_model": "Apple M3",
+  "cpu_threads": 4,
+  "accelerator": "apple-mps (Metal Performance Shaders)",
+  "device": "apple-mps (Metal Performance Shaders)",
+  "torch": "2.14.1",
+  "packages": {
+    "torchvision": "0.29.1",
+    "timm": "1.0.30",
+    "transformers": "5.19.0",
+    "peft": "0.21.2",
+    "onnx": "1.23.2",
+    "onnxruntime": "1.31.0",
+    "numpy": "2.4.6",
+    "scikit-learn": "1.9.1",
+    "opencv-python-headless": "5.0.0.93",
+    "pycocotools": "2.0.11",
+    "matplotlib": "3.11.2",
+    "pandas": "3.0.6",
+    "scipy": "1.17.1"
+  },
+  "git_commit": "e5b0fbaa988949cdd9e406ff7d27e21ef575787c",
+  "git_branch": "main",
+  "git_dirty": true,
+  "aerialvit": "0.1.0"
+}

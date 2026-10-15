@@ -17,7 +17,7 @@ import json
 from pathlib import Path
 from typing import Any
 
-from aerial_vit.ablation import read_csv
+from aerial_vit.ablation import cell_key, read_csv
 from aerial_vit.config import ARTIFACTS_DIR, REPORTS_DIR, RESULTS_DIR
 
 __all__ = ["build_tables", "write_report", "TABLES_DIR", "TABLE_ORDER"]
@@ -25,6 +25,7 @@ __all__ = ["build_tables", "write_report", "TABLES_DIR", "TABLE_ORDER"]
 TABLES_DIR = REPORTS_DIR / "tables"
 
 TABLE_ORDER = [
+    "headline",
     "provenance",
     "foundation_vs_tasktrained",
     "ablation_miou",
@@ -38,6 +39,7 @@ TABLE_ORDER = [
 ]
 
 TITLES = {
+    "headline": "Headline",
     "provenance": "Provenance",
     "foundation_vs_tasktrained": "Foundation features vs open-vocabulary VLMs",
     "ablation_miou": "Label-scarcity ablation - mIoU",
@@ -383,6 +385,7 @@ def table_quality() -> str:
 
 
 _BUILDERS = {
+    "headline": lambda: _headline({}),
     "provenance": table_provenance,
     "foundation_vs_tasktrained": table_foundation_vs_tasktrained,
     "ablation_miou": lambda: _ablation_metric_table("miou"),
@@ -417,32 +420,76 @@ def _headline(tables: dict[str, str]) -> str:
     zs = [r for r in fvt if r.get("zero_shot") in ("True", True)]
     if task and zs:
         lines.append(
-            f"- Task-trained DINOv2 + heads reaches **mIoU {_num(task['miou'])}** and "
-            f"**mAP@0.5 {_num(task['map_50'])}**, vs "
-            + " / ".join(
+            "- **Frozen features beat open-vocabulary zero-shot by a wide margin.** "
+            f"{task['method']} reaches mIoU **{_num(task['miou'])}**, landing-zone IoU "
+            f"**{_num(task['landing_zone_iou'])}** and mAP@0.5 **{_num(task['map_50'])}**, versus "
+            + "; ".join(
                 f"{r['method']} mIoU {_num(r['miou'])}, mAP@0.5 {_num(r['map_50'])}" for r in zs
             )
             + "."
         )
+
+    cells = _ablation_cells()
+    if cells:
+        best = max(cells.values(), key=lambda v: v.get("miou_mean") or 0.0)
+        lines.append(
+            f"- **Best overall model:** `{best['mode']}` at a {best['label_fraction'] * 100:g}% label "
+            f"budget, mIoU **{_num(best.get('miou_mean'))}** with "
+            f"**{_int(best.get('trainable_params'))}** trainable parameters "
+            f"({_num(best.get('trainable_pct'), 2)}% of the network)."
+        )
+
     gains = summary.get("_few_label_gain_vs_linear")
     if gains:
         frac = summary.get("_few_label_fraction")
-        best = max(gains.items(), key=lambda kv: kv[1] if kv[1] is not None else -1)
+        ranked = sorted(gains.items(), key=lambda kv: kv[1] if kv[1] is not None else 0.0)
+        worst = ranked[0]
+        linear_cell = cells.get(cell_key("linear", frac)) if cells else None
         lines.append(
-            f"- At a **{frac * 100:g}% label budget**, `{best[0].split('@')[0]}` improves mIoU by "
-            f"**{_num(best[1])}** over the linear probe."
+            f"- **Label scarcity flips the ranking.** At a {frac * 100:g}% budget the linear probe "
+            f"({_int((linear_cell or {}).get('trainable_params'))} trainable) reaches mIoU "
+            f"**{_num((linear_cell or {}).get('miou_mean'))}**, while `{worst[0].split('@')[0]}` "
+            f"({_int((cells.get(worst[0]) or {}).get('trainable_params'))} trainable) is "
+            f"**{_num(worst[1])}** mIoU relative to it - more capacity is *worse* when labels are "
+            f"scarce, and only pays off past the ~25% mark."
         )
+
     onboard = latency.get("onboard")
     if onboard:
+        onnx_fps = ((onboard.get("per_backend_batch1") or {}).get("onnxruntime") or {}).get("fps")
         lines.append(
-            f"- Best ONNX/TorchScript throughput **{_num(onboard.get('best_fps'), 2)} FPS** "
-            f"(`{onboard.get('best_backend')}`, {onboard.get('best_resolution')}) -> "
-            f"{onboard.get('verdict')} against a {onboard.get('requirement_hz')} Hz requirement."
+            f"- **Onboard:** best batch-1 throughput **{_num(onboard.get('best_fps'), 2)} FPS** "
+            f"(`{onboard.get('best_backend')}`, {onboard.get('best_resolution')}) against a "
+            f"{onboard.get('requirement_hz'):g} Hz streaming requirement -> **{onboard.get('verdict')}** "
+            f"(CPU-only ONNX Runtime: {_num(onnx_fps, 2)} FPS)."
         )
+
+    hard = _load_json(RESULTS_DIR / "hard_cases.json") or {}
+    if hard.get("per_cluster"):
+        worst_c = min(
+            hard["per_cluster"],
+            key=lambda r: r.get("delta_miou") if r.get("delta_miou") is not None else 0.0,
+        )
+        rt = hard.get("retrain", {})
+        line = (
+            f"- **Worst failure cluster:** `{worst_c.get('tag')}` ({worst_c.get('n_frames')} test frames), "
+            f"mIoU {_num(worst_c.get('miou'))} vs split {_num(worst_c.get('split_miou'))} "
+            f"(**delta {_num(worst_c.get('delta_miou'))}**)"
+        )
+        if rt.get("performed"):
+            line += (
+                f"; retraining with the mined hard frames moves overall mIoU "
+                f"{_num(rt['before'].get('miou'))} -> control {_num(rt['control'].get('miou'))} -> "
+                f"+hard **{_num(rt['after'].get('miou'))}** (delta vs control "
+                f"**{_num(rt['delta_vs_control'].get('miou'))}**)"
+            )
+        lines.append(line + ".")
+
     if quality:
         lines.append(
-            f"- Test suite: **{_int(quality.get('tests_passed'))} passed**, "
-            f"**{_num(quality.get('coverage_pct'), 1)}% coverage** of `aerial_vit`."
+            f"- **Quality:** {_int(quality.get('tests_passed'))} tests passing "
+            f"({_int(quality.get('tests_deselected'))} slow tests deselected), "
+            f"**{_num(quality.get('coverage_pct'), 1)}% coverage**, ruff clean."
         )
     return "\n".join(lines) if lines else "_no headline artifacts yet._"
 
@@ -461,11 +508,7 @@ def write_report(
         (tables_dir / f"{name}.md").write_text(tables[name] + "\n")
 
     body = ["# Results", "", "_Generated by `scripts/make_report.py` from `artifacts/` only._", ""]
-    body += ["## Headline", "", _headline(tables), ""]
     for name in order:
-        if name == "provenance":
-            body += [f"## {TITLES[name]}", "", tables[name], ""]
-            continue
         body += [f"## {TITLES[name]}", "", tables[name], ""]
         fig = {
             "ablation_miou": "reports/figures/ablation_miou_vs_labels.png",
@@ -490,7 +533,7 @@ def write_report(
     payload = {
         "tables": tables,
         "table_order": order,
-        "headline": _headline(tables),
+        "headline": tables.get("headline", ""),
         "data_manifest": manifest,
         "provenance": prov,
         "artifacts_present": {

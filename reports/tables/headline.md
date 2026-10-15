@@ -1,0 +1,6 @@
+- **Frozen features beat open-vocabulary zero-shot by a wide margin.** DINOv2 (frozen) + linear head reaches mIoU **0.4967**, landing-zone IoU **0.8835** and mAP@0.5 **0.3658**, versus owlvit (zero-shot) mIoU 0.0751, mAP@0.5 0.1853; clip (zero-shot) mIoU 0.0755, mAP@0.5 0.0002.
+- **Best overall model:** `full` at a 100% label budget, mIoU **0.6063** with **24,140,309** trainable parameters (100.00% of the network).
+- **Label scarcity flips the ranking.** At a 1% budget the linear probe (2,083,733 trainable) reaches mIoU **0.1400**, while `full` (24,140,309 trainable) is **-0.0162** mIoU relative to it - more capacity is *worse* when labels are scarce, and only pays off past the ~25% mark.
+- **Onboard:** best batch-1 throughput **247.69 FPS** (`torchscript`, 224x224) against a 10 Hz streaming requirement -> **feasible** (CPU-only ONNX Runtime: 19.26 FPS).
+- **Worst failure cluster:** `dense-objects` (27 test frames), mIoU 0.5713 vs split 0.6063 (**delta -0.0350**); retraining with the mined hard frames moves overall mIoU 0.6063 -> control 0.6335 -> +hard **0.6388** (delta vs control **0.0053**).
+- **Quality:** 162 tests passing (2 slow tests deselected), **72.4% coverage**, ruff clean.

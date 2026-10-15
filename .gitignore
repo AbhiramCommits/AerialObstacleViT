@@ -10,6 +10,7 @@ venv/
 .pytest_cache/
 .ruff_cache/
 .coverage
+coverage.json
 coverage.xml
 htmlcov/
 .mypy_cache/
