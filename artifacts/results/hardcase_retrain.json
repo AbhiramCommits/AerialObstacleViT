@@ -1,0 +1,71 @@
+{
+  "performed": true,
+  "repeat": 3,
+  "n_hard_frames_added": 24,
+  "base_train_size": 192,
+  "augmented_train_size": 264,
+  "mode": "full",
+  "epochs_per_run": 8,
+  "train_seconds_control": 211.585,
+  "train_seconds_hard": 160.386,
+  "trainable_params": 24140309,
+  "before": {
+    "miou": 0.606257,
+    "landing_zone_iou": 0.906111,
+    "map_50": 0.396386
+  },
+  "control": {
+    "miou": 0.633509,
+    "landing_zone_iou": 0.92038,
+    "map_50": 0.430353
+  },
+  "after": {
+    "miou": 0.638797,
+    "landing_zone_iou": 0.920413,
+    "map_50": 0.419888
+  },
+  "delta": {
+    "miou": 0.03254,
+    "map_50": 0.023502,
+    "landing_zone_iou": 0.014302
+  },
+  "delta_vs_control": {
+    "miou": 0.005288,
+    "map_50": -0.010465,
+    "landing_zone_iou": 3.3e-05
+  },
+  "per_cluster": [
+    {
+      "cluster": 0,
+      "tag": "low-contrast/haze",
+      "n_frames": 13,
+      "miou_before": 0.610663,
+      "miou_control": 0.642788,
+      "miou_after": 0.642452,
+      "delta_miou": 0.031789,
+      "delta_miou_vs_control": -0.000336,
+      "map_50_before": 0.41849,
+      "map_50_control": 0.464274,
+      "map_50_after": 0.427273,
+      "delta_map_50": 0.008783,
+      "delta_map_50_vs_control": -0.037001
+    },
+    {
+      "cluster": 1,
+      "tag": "dense-objects",
+      "n_frames": 27,
+      "miou_before": 0.603942,
+      "miou_control": 0.625552,
+      "miou_after": 0.63597,
+      "delta_miou": 0.032028,
+      "delta_miou_vs_control": 0.010418,
+      "map_50_before": 0.391073,
+      "map_50_control": 0.418537,
+      "map_50_after": 0.416139,
+      "delta_map_50": 0.025066,
+      "delta_map_50_vs_control": -0.002398
+    }
+  ],
+  "test_split_unchanged": true,
+  "note": "hard frames are mined from the validation split; the test split is never used for training. 'control' is the same warm-start + same epochs trained WITHOUT the hard frames, so delta_vs_control isolates the effect of the hard examples themselves."
+}

@@ -1,0 +1,647 @@
+{
+  "checkpoint": "artifacts/runs/ablation/full_f100_s1337/best.pt",
+  "mode": "full",
+  "device": "apple-mps (Metal Performance Shaders)",
+  "n_val_frames": 40,
+  "n_test_frames": 40,
+  "top_k": 24,
+  "ranking_key": "entropy_mean",
+  "hard_frames": [
+    "scene_0213",
+    "scene_0212",
+    "scene_0221",
+    "scene_0142",
+    "scene_0211",
+    "scene_0098",
+    "scene_0124",
+    "scene_0132",
+    "scene_0203",
+    "scene_0254",
+    "scene_0116",
+    "scene_0163",
+    "scene_0138",
+    "scene_0122",
+    "scene_0109",
+    "scene_0038",
+    "scene_0173",
+    "scene_0157",
+    "scene_0229",
+    "scene_0059",
+    "scene_0193",
+    "scene_0174",
+    "scene_0100",
+    "scene_0202"
+  ],
+  "hard_frame_uncertainty": {
+    "scene_0213": {
+      "entropy_mean": 0.26349676748623824,
+      "entropy_p95": 0.909237785823749,
+      "entropy_normalized": 0.12671515991422272,
+      "margin_mean": 0.8157678023539713,
+      "confidence_mean": 0.8994877070591818,
+      "confidence_p05": 0.5525879263877869,
+      "mc_variance": 0.0003702356480062008,
+      "knn_ood": 0.11487913387729373
+    },
+    "scene_0212": {
+      "entropy_mean": 0.2339994420940856,
+      "entropy_p95": 0.9462597156328847,
+      "entropy_normalized": 0.11252994489330717,
+      "margin_mean": 0.8527389626957245,
+      "confidence_mean": 0.9171666924272098,
+      "confidence_p05": 0.5599944591522217,
+      "mc_variance": 0.0005056768422946334,
+      "knn_ood": 0.1688229054412048
+    },
+    "scene_0221": {
+      "entropy_mean": 0.2339325029634497,
+      "entropy_p95": 1.0045172912193618,
+      "entropy_normalized": 0.1124977539760372,
+      "margin_mean": 0.8487989078621428,
+      "confidence_mean": 0.9143065495502052,
+      "confidence_p05": 0.5443491041660309,
+      "mc_variance": 0.0004324392357375473,
+      "knn_ood": 0.1502573614285449
+    },
+    "scene_0142": {
+      "entropy_mean": 0.22706315076651437,
+      "entropy_p95": 0.8288089490056717,
+      "entropy_normalized": 0.10919429385982445,
+      "margin_mean": 0.8443499351842257,
+      "confidence_mean": 0.9156538996844296,
+      "confidence_p05": 0.5765322297811508,
+      "mc_variance": 0.00045193772530183196,
+      "knn_ood": 0.1571725413904502
+    },
+    "scene_0211": {
+      "entropy_mean": 0.22615032013239084,
+      "entropy_p95": 0.8811390580585148,
+      "entropy_normalized": 0.10875531511681728,
+      "margin_mean": 0.8441338012294699,
+      "confidence_mean": 0.9146316995848996,
+      "confidence_p05": 0.5574889332056046,
+      "mc_variance": 0.0005711052217520773,
+      "knn_ood": 0.13299828714789552
+    },
+    "scene_0098": {
+      "entropy_mean": 0.21954692538177484,
+      "entropy_p95": 0.9103840088723315,
+      "entropy_normalized": 0.10557975349690198,
+      "margin_mean": 0.857560795019403,
+      "confidence_mean": 0.9208663282025016,
+      "confidence_p05": 0.5744300037622452,
+      "mc_variance": 0.0004270874778740108,
+      "knn_ood": 0.1349608296673765
+    },
+    "scene_0124": {
+      "entropy_mean": 0.2109765913686793,
+      "entropy_p95": 0.8941830954317525,
+      "entropy_normalized": 0.10145829403708366,
+      "margin_mean": 0.8633223644715204,
+      "confidence_mean": 0.9241035076010288,
+      "confidence_p05": 0.5786888152360916,
+      "mc_variance": 0.0005292773712426424,
+      "knn_ood": 0.13655996534412226
+    },
+    "scene_0132": {
+      "entropy_mean": 0.20194814914069226,
+      "entropy_p95": 0.805208694263338,
+      "entropy_normalized": 0.09711653109399385,
+      "margin_mean": 0.8630323371284219,
+      "confidence_mean": 0.9259338435326104,
+      "confidence_p05": 0.5976362079381943,
+      "mc_variance": 0.00039721725624985993,
+      "knn_ood": 0.1252200097728593
+    },
+    "scene_0203": {
+      "entropy_mean": 0.19975409626839977,
+      "entropy_p95": 0.8100529493235991,
+      "entropy_normalized": 0.09606141469455898,
+      "margin_mean": 0.8632384232440218,
+      "confidence_mean": 0.9257384405455942,
+      "confidence_p05": 0.5885764211416245,
+      "mc_variance": 0.0004331507661845535,
+      "knn_ood": 0.12475439468205715
+    },
+    "scene_0254": {
+      "entropy_mean": 0.19375364430230801,
+      "entropy_p95": 0.7679806686648815,
+      "entropy_normalized": 0.09317580726303466,
+      "margin_mean": 0.8674598266088918,
+      "confidence_mean": 0.9288285586226266,
+      "confidence_p05": 0.6040228456258774,
+      "mc_variance": 0.0004245971795171499,
+      "knn_ood": 0.14451812699993033
+    },
+    "scene_0116": {
+      "entropy_mean": 0.1931848332777625,
+      "entropy_p95": 0.8142157188007317,
+      "entropy_normalized": 0.09290226698159638,
+      "margin_mean": 0.8682885161227696,
+      "confidence_mean": 0.9281890464118653,
+      "confidence_p05": 0.586567759513855,
+      "mc_variance": 0.00046369535266421735,
+      "knn_ood": 0.12814520447522454
+    },
+    "scene_0163": {
+      "entropy_mean": 0.1919068087472598,
+      "entropy_p95": 0.7898044171928464,
+      "entropy_normalized": 0.09228766709749947,
+      "margin_mean": 0.8652380492682814,
+      "confidence_mean": 0.927295328923311,
+      "confidence_p05": 0.585925355553627,
+      "mc_variance": 0.0003674808540381491,
+      "knn_ood": 0.12235491833981223
+    },
+    "scene_0138": {
+      "entropy_mean": 0.18959005265732526,
+      "entropy_p95": 0.8657717683105941,
+      "entropy_normalized": 0.09117354292353355,
+      "margin_mean": 0.8743208950550635,
+      "confidence_mean": 0.9302275372866294,
+      "confidence_p05": 0.5809334814548492,
+      "mc_variance": 0.00044861133210361004,
+      "knn_ood": 0.12541169635798072
+    },
+    "scene_0122": {
+      "entropy_mean": 0.18822240980975802,
+      "entropy_p95": 0.8376902939895382,
+      "entropy_normalized": 0.09051584573890271,
+      "margin_mean": 0.8742912029964507,
+      "confidence_mean": 0.9307924317545258,
+      "confidence_p05": 0.590132400393486,
+      "mc_variance": 0.0003775699296966195,
+      "knn_ood": 0.1342368382044705
+    },
+    "scene_0109": {
+      "entropy_mean": 0.18664367231879334,
+      "entropy_p95": 0.8344328384751611,
+      "entropy_normalized": 0.08975663348920929,
+      "margin_mean": 0.8760682841428507,
+      "confidence_mean": 0.931860988155454,
+      "confidence_p05": 0.594758078455925,
+      "mc_variance": 0.0002880154352169484,
+      "knn_ood": 0.12703419810881372
+    },
+    "scene_0038": {
+      "entropy_mean": 0.18486611652440144,
+      "entropy_p95": 0.8786387449212703,
+      "entropy_normalized": 0.08890180984605174,
+      "margin_mean": 0.8796095017587988,
+      "confidence_mean": 0.9327445945319985,
+      "confidence_p05": 0.5908262431621552,
+      "mc_variance": 0.0003488972724881023,
+      "knn_ood": 0.13399039114163352
+    },
+    "scene_0173": {
+      "entropy_mean": 0.18385885574137745,
+      "entropy_p95": 0.7914517319619543,
+      "entropy_normalized": 0.08841741980053486,
+      "margin_mean": 0.873342626329523,
+      "confidence_mean": 0.9315531967897966,
+      "confidence_p05": 0.5991168320178986,
+      "mc_variance": 0.0004506242403294891,
+      "knn_ood": 0.11791216695929359
+    },
+    "scene_0157": {
+      "entropy_mean": 0.18116638580152464,
+      "entropy_p95": 0.7865661818403475,
+      "entropy_normalized": 0.08712261545721212,
+      "margin_mean": 0.8743809411273206,
+      "confidence_mean": 0.9317827931117048,
+      "confidence_p05": 0.5972965806722641,
+      "mc_variance": 0.00037312135100364685,
+      "knn_ood": 0.1166449762864928
+    },
+    "scene_0229": {
+      "entropy_mean": 0.1800870057212328,
+      "entropy_p95": 0.7669547898423125,
+      "entropy_normalized": 0.086603543360855,
+      "margin_mean": 0.8759564243812417,
+      "confidence_mean": 0.9331407883793724,
+      "confidence_p05": 0.6079424917697906,
+      "mc_variance": 0.0004090812290087342,
+      "knn_ood": 0.13326683509770124
+    },
+    "scene_0059": {
+      "entropy_mean": 0.17553221675439257,
+      "entropy_p95": 0.818115544911321,
+      "entropy_normalized": 0.08441315287593626,
+      "margin_mean": 0.8823835880552726,
+      "confidence_mean": 0.9353663968195549,
+      "confidence_p05": 0.5984257906675339,
+      "mc_variance": 0.0003674600156955421,
+      "knn_ood": 0.11854135664714738
+    },
+    "scene_0193": {
+      "entropy_mean": 0.16791950454534887,
+      "entropy_p95": 0.7337420822622039,
+      "entropy_normalized": 0.0807522121587022,
+      "margin_mean": 0.8750389410156544,
+      "confidence_mean": 0.9335738603228808,
+      "confidence_p05": 0.5947852432727814,
+      "mc_variance": 0.0006366163142956793,
+      "knn_ood": 0.12607394986442624
+    },
+    "scene_0174": {
+      "entropy_mean": 0.16681112045849664,
+      "entropy_p95": 0.7451640574806389,
+      "entropy_normalized": 0.08021919208353488,
+      "margin_mean": 0.8825942875553635,
+      "confidence_mean": 0.9373541445666164,
+      "confidence_p05": 0.6180300414562225,
+      "mc_variance": 0.00023852961021475494,
+      "knn_ood": 0.1278353454351227
+    },
+    "scene_0100": {
+      "entropy_mean": 0.1600998511647331,
+      "entropy_p95": 0.7341391372152348,
+      "entropy_normalized": 0.07699175377414054,
+      "margin_mean": 0.8906303116959137,
+      "confidence_mean": 0.9415062381731517,
+      "confidence_p05": 0.6363361030817032,
+      "mc_variance": 0.000316449353704229,
+      "knn_ood": 0.11984214372302937
+    },
+    "scene_0202": {
+      "entropy_mean": 0.15848628212548307,
+      "entropy_p95": 0.821166358153806,
+      "entropy_normalized": 0.07621579109045455,
+      "margin_mean": 0.8947781704195691,
+      "confidence_mean": 0.9413344157534196,
+      "confidence_p05": 0.6083309650421143,
+      "mc_variance": 0.0004261575231794268,
+      "knn_ood": 0.14882846581748538
+    }
+  },
+  "uncertainty_summary": {
+    "val": {
+      "entropy_mean": {
+        "mean": 0.169142,
+        "p95": 0.233936
+      },
+      "margin_mean": {
+        "mean": 0.885446,
+        "p95": 0.927623
+      },
+      "confidence_mean": {
+        "mean": 0.937451,
+        "p95": 0.96166
+      },
+      "mc_variance": {
+        "mean": 0.000376,
+        "p95": 0.000531
+      },
+      "knn_ood": {
+        "mean": 0.136934,
+        "p95": 0.172826
+      }
+    },
+    "test": {
+      "entropy_mean": {
+        "mean": 0.169889,
+        "p95": 0.223992
+      },
+      "margin_mean": {
+        "mean": 0.884944,
+        "p95": 0.923249
+      },
+      "confidence_mean": {
+        "mean": 0.937286,
+        "p95": 0.958426
+      },
+      "mc_variance": {
+        "mean": 0.00038,
+        "p95": 0.000536
+      },
+      "knn_ood": {
+        "mean": 0.133963,
+        "p95": 0.15302
+      }
+    }
+  },
+  "clustering": {
+    "k": 2,
+    "silhouette": 0.09818,
+    "k_scores": {
+      "2": 0.09818,
+      "3": 0.057135,
+      "4": 0.073086,
+      "5": 0.084077,
+      "6": 0.074711
+    },
+    "labels": [
+      1,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1,
+      0,
+      1,
+      0,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      0,
+      0,
+      1,
+      1
+    ]
+  },
+  "clusters": {
+    "0": {
+      "cluster": 0,
+      "n_frames": 7,
+      "tags": [
+        "low-contrast/haze",
+        "altitude-shift (zoomed-out)"
+      ],
+      "tag": "low-contrast/haze",
+      "z_scores": {
+        "glare": -0.2882,
+        "contrast": -0.48,
+        "occlusion": -0.7127,
+        "median_instance_area": -0.4521,
+        "instance_density": -0.9623,
+        "altitude_ratio": -0.4521,
+        "boundary_ambiguity": 0.1254
+      },
+      "means": {
+        "glare": 0.0,
+        "contrast": 0.0491,
+        "occlusion": 0.320221,
+        "median_instance_area": 555.308995,
+        "instance_density": 3.416545,
+        "altitude_ratio": 0.801242,
+        "boundary_ambiguity": 0.182247
+      },
+      "stds": {
+        "glare": 0.0,
+        "contrast": 0.012365,
+        "occlusion": 0.100965,
+        "median_instance_area": 226.566714,
+        "instance_density": 0.778676,
+        "altitude_ratio": 0.326907,
+        "boundary_ambiguity": 0.009823
+      },
+      "split_means": {
+        "glare": 0.000516,
+        "contrast": 0.058847,
+        "occlusion": 0.398638,
+        "median_instance_area": 694.726676,
+        "instance_density": 4.284917,
+        "altitude_ratio": 1.002404,
+        "boundary_ambiguity": 0.180501
+      },
+      "frames": [
+        "scene_0211",
+        "scene_0132",
+        "scene_0254",
+        "scene_0163",
+        "scene_0122",
+        "scene_0193",
+        "scene_0174"
+      ],
+      "test_frames": [
+        "scene_0089",
+        "scene_0137",
+        "scene_0156",
+        "scene_0062",
+        "scene_0264",
+        "scene_0086",
+        "scene_0145",
+        "scene_0246",
+        "scene_0077",
+        "scene_0123",
+        "scene_0171",
+        "scene_0144",
+        "scene_0260"
+      ]
+    },
+    "1": {
+      "cluster": 1,
+      "n_frames": 17,
+      "tags": [
+        "dense-objects",
+        "occlusion"
+      ],
+      "tag": "dense-objects",
+      "z_scores": {
+        "glare": 0.1187,
+        "contrast": 0.1977,
+        "occlusion": 0.2935,
+        "median_instance_area": 0.1862,
+        "instance_density": 0.3963,
+        "altitude_ratio": 0.1862,
+        "boundary_ambiguity": -0.0516
+      },
+      "means": {
+        "glare": 0.000728,
+        "contrast": 0.06286,
+        "occlusion": 0.430927,
+        "median_instance_area": 752.133956,
+        "instance_density": 4.642482,
+        "altitude_ratio": 1.085235,
+        "boundary_ambiguity": 0.179782
+      },
+      "stds": {
+        "glare": 0.00209,
+        "contrast": 0.021536,
+        "occlusion": 0.096529,
+        "median_instance_area": 319.06425,
+        "instance_density": 0.679353,
+        "altitude_ratio": 0.46037,
+        "boundary_ambiguity": 0.015234
+      },
+      "split_means": {
+        "glare": 0.000516,
+        "contrast": 0.058847,
+        "occlusion": 0.398638,
+        "median_instance_area": 694.726676,
+        "instance_density": 4.284917,
+        "altitude_ratio": 1.002404,
+        "boundary_ambiguity": 0.180501
+      },
+      "frames": [
+        "scene_0213",
+        "scene_0212",
+        "scene_0221",
+        "scene_0142",
+        "scene_0098",
+        "scene_0124",
+        "scene_0203",
+        "scene_0116",
+        "scene_0138",
+        "scene_0109",
+        "scene_0038",
+        "scene_0173",
+        "scene_0157",
+        "scene_0229",
+        "scene_0059",
+        "scene_0100",
+        "scene_0202"
+      ],
+      "test_frames": [
+        "scene_0041",
+        "scene_0201",
+        "scene_0036",
+        "scene_0105",
+        "scene_0237",
+        "scene_0227",
+        "scene_0018",
+        "scene_0210",
+        "scene_0021",
+        "scene_0026",
+        "scene_0081",
+        "scene_0209",
+        "scene_0265",
+        "scene_0043",
+        "scene_0088",
+        "scene_0119",
+        "scene_0235",
+        "scene_0056",
+        "scene_0029",
+        "scene_0262",
+        "scene_0199",
+        "scene_0267",
+        "scene_0045",
+        "scene_0232",
+        "scene_0175",
+        "scene_0049",
+        "scene_0129"
+      ]
+    }
+  },
+  "per_cluster": [
+    {
+      "cluster": 0,
+      "tag": "low-contrast/haze",
+      "tags": "low-contrast/haze;altitude-shift (zoomed-out)",
+      "n_frames": 13,
+      "miou": 0.582502,
+      "split_miou": 0.606257,
+      "delta_miou": -0.023755,
+      "landing_zone_iou": 0.92346,
+      "split_landing_zone_iou": 0.906111,
+      "delta_landing_zone_iou": 0.017349,
+      "map_50": 0.41849,
+      "split_map_50": 0.396386,
+      "delta_map_50": 0.022104
+    },
+    {
+      "cluster": 1,
+      "tag": "dense-objects",
+      "tags": "dense-objects;occlusion",
+      "n_frames": 27,
+      "miou": 0.5713,
+      "split_miou": 0.606257,
+      "delta_miou": -0.034957,
+      "landing_zone_iou": 0.893467,
+      "split_landing_zone_iou": 0.906111,
+      "delta_landing_zone_iou": -0.012644,
+      "map_50": 0.391073,
+      "split_map_50": 0.396386,
+      "delta_map_50": -0.005313
+    }
+  ],
+  "split_metrics": {
+    "miou": 0.606257,
+    "landing_zone_iou": 0.906111,
+    "map_50": 0.396386
+  },
+  "figures": [
+    "/Users/abhiramkasireddi/AerialObstacleViT/reports/figures/hard_case_clusters.png",
+    "/Users/abhiramkasireddi/AerialObstacleViT/reports/figures/hard_case_montage.png"
+  ],
+  "retrain": {
+    "performed": true,
+    "repeat": 3,
+    "n_hard_frames_added": 24,
+    "base_train_size": 192,
+    "augmented_train_size": 264,
+    "mode": "full",
+    "epochs_per_run": 8,
+    "train_seconds_control": 211.585,
+    "train_seconds_hard": 160.386,
+    "trainable_params": 24140309,
+    "before": {
+      "miou": 0.606257,
+      "landing_zone_iou": 0.906111,
+      "map_50": 0.396386
+    },
+    "control": {
+      "miou": 0.633509,
+      "landing_zone_iou": 0.92038,
+      "map_50": 0.430353
+    },
+    "after": {
+      "miou": 0.638797,
+      "landing_zone_iou": 0.920413,
+      "map_50": 0.419888
+    },
+    "delta": {
+      "miou": 0.03254,
+      "map_50": 0.023502,
+      "landing_zone_iou": 0.014302
+    },
+    "delta_vs_control": {
+      "miou": 0.005288,
+      "map_50": -0.010465,
+      "landing_zone_iou": 3.3e-05
+    },
+    "per_cluster": [
+      {
+        "cluster": 0,
+        "tag": "low-contrast/haze",
+        "n_frames": 13,
+        "miou_before": 0.610663,
+        "miou_control": 0.642788,
+        "miou_after": 0.642452,
+        "delta_miou": 0.031789,
+        "delta_miou_vs_control": -0.000336,
+        "map_50_before": 0.41849,
+        "map_50_control": 0.464274,
+        "map_50_after": 0.427273,
+        "delta_map_50": 0.008783,
+        "delta_map_50_vs_control": -0.037001
+      },
+      {
+        "cluster": 1,
+        "tag": "dense-objects",
+        "n_frames": 27,
+        "miou_before": 0.603942,
+        "miou_control": 0.625552,
+        "miou_after": 0.63597,
+        "delta_miou": 0.032028,
+        "delta_miou_vs_control": 0.010418,
+        "map_50_before": 0.391073,
+        "map_50_control": 0.418537,
+        "map_50_after": 0.416139,
+        "delta_map_50": 0.025066,
+        "delta_map_50_vs_control": -0.002398
+      }
+    ],
+    "test_split_unchanged": true,
+    "note": "hard frames are mined from the validation split; the test split is never used for training. 'control' is the same warm-start + same epochs trained WITHOUT the hard frames, so delta_vs_control isolates the effect of the hard examples themselves."
+  },
+  "config": {
+    "backbone": "facebook/dinov2-small",
+    "seg_head": "conv",
+    "mode": "full",
+    "mc_dropout_samples": 8,
+    "cluster_k_range": [
+      2,
+      6
+    ],
+    "seed": 1337
+  }
+}
