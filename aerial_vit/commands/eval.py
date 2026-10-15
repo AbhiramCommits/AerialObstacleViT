@@ -44,7 +44,13 @@ def resolve_checkpoint(cfg: Config, checkpoint: str | None) -> Path:
     raise FileNotFoundError("no checkpoint found; train a model first")
 
 
-def run_eval(cfg: Config, checkpoint: str | None = None, split: str = "test") -> dict:
+def run_eval(
+    cfg: Config,
+    checkpoint: str | None = None,
+    split: str = "test",
+    out_path: str | Path | None = None,
+    dump_dir: str | Path | None = None,
+) -> dict:
     seed_everything(cfg.run.seed, cfg.run.deterministic)
     device = resolve_device(cfg.run.device)
     ckpt_path = resolve_checkpoint(cfg, checkpoint)
@@ -55,7 +61,7 @@ def run_eval(cfg: Config, checkpoint: str | None = None, split: str = "test") ->
     ds = {"train": train_ds, "val": val_ds, "test": test_ds}[split]
     loader = make_loader(ds, cfg.eval.batch_size, False, cfg.data.num_workers, cfg.run.seed)
 
-    dump_dir = RESULTS_DIR / "coco"
+    dump_dir = Path(dump_dir) if dump_dir is not None else RESULTS_DIR / "coco"
     warmup(model, loader, device)
     t0 = time.perf_counter()
     preds = predict_dataset(model, loader, device, cfg)
@@ -96,7 +102,7 @@ def run_eval(cfg: Config, checkpoint: str | None = None, split: str = "test") ->
         }
     )
 
-    out = RESULTS_DIR / f"{cfg.run.name}_eval.json"
+    out = Path(out_path) if out_path is not None else RESULTS_DIR / f"{cfg.run.name}_eval.json"
     out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text(json.dumps(report, indent=2, default=float) + "\n")
     log.info("wrote %s", out)

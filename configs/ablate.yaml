@@ -1,7 +1,11 @@
 # Config for the label-scarcity ablation sweep (Step 4) and hard-case mining
-# (Step 5).  Sized so the whole grid finishes in a reasonable time on one
-# 8-core Apple M3 without a CUDA GPU; the effective config is recorded in
-# artifacts/results/ablation_summary.json under "config".
+# (Step 5).
+#
+# IMPORTANT: the `data:` block is identical to `configs/full.yaml` on purpose.
+# Every stage of the pipeline must share one manifest and one train/val/test
+# split, otherwise the trained checkpoint would be evaluated against a
+# different test set than the one the ablation numbers refer to.  Only the
+# *training* hyper-parameters differ here.
 defaults: base
 
 run:
@@ -9,12 +13,12 @@ run:
   tags: [ablation]
 
 data:
-  n_train: 160
+  n_train: 192
   n_val: 40
   n_test: 40
   augment: true
   synthetic:
-    n_scenes: 30
+    n_scenes: 34
     base_size: 384
     min_objects: 14
     max_objects: 30

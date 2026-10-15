@@ -29,6 +29,7 @@ def _register() -> None:
         ("export", "export"),
         ("bench_latency", "bench-latency"),
         ("make_report", "make-report"),
+        ("quality", "quality"),
     ]
     for module_name, cmd_name in mapping:
         try:
