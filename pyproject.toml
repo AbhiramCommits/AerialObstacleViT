@@ -1,0 +1,95 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "aerialvit"
+version = "0.1.0"
+description = "Frozen DINOv2 foundation features vs open-vocabulary VLM zero-shot detection for low-altitude aerial obstacle and landing-zone perception."
+readme = "README.md"
+requires-python = ">=3.11,<3.13"
+license = { text = "MIT" }
+authors = [{ name = "AerialObstacleViT" }]
+keywords = ["remote-sensing", "uav", "dinov2", "owl-vit", "clip", "semantic-segmentation", "lora"]
+classifiers = [
+  "Programming Language :: Python :: 3.11",
+  "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+
+dependencies = [
+  "torch>=2.4",
+  "torchvision>=0.19",
+  "timm>=1.0",
+  "transformers>=4.44",
+  "peft>=0.12",
+  "accelerate>=0.33",
+  "numpy>=1.24",
+  "scipy>=1.11",
+  "scikit-learn>=1.4",
+  "opencv-python-headless>=4.9",
+  "pycocotools>=2.0.7",
+  "matplotlib>=3.8",
+  "onnx>=1.16",
+  "onnxruntime>=1.18",
+  "pandas>=2.1",
+  "pillow>=10.0",
+  "pyyaml>=6.0",
+  "typer>=0.12",
+  "tqdm>=4.66",
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=8.0",
+  "pytest-cov>=5.0",
+  "ruff>=0.6",
+]
+
+[project.scripts]
+aerialvit = "aerial_vit.cli:app"
+
+[tool.setuptools.packages.find]
+include = ["aerial_vit*"]
+
+[tool.setuptools.package-data]
+aerial_vit = ["py.typed"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+exclude = [".venv", "artifacts", "data", "build", "dist"]
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "UP", "B", "C4", "SIM"]
+ignore = [
+  "E501",   # line length handled by formatter
+  "B008",   # typer uses function calls in defaults
+  "SIM108", # ternary not always clearer
+]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/*" = ["E402", "F401"]
+"scripts/*" = ["E402"]
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra --strict-markers"
+markers = [
+  "slow: tests that download model weights or need a GPU (deselected in CI)",
+]
+filterwarnings = [
+  "ignore::DeprecationWarning",
+  "ignore::UserWarning",
+]
+
+[tool.coverage.run]
+source = ["aerial_vit"]
+omit = ["aerial_vit/commands/*", "aerial_vit/cli.py"]
+
+[tool.coverage.report]
+show_missing = true
+skip_covered = false

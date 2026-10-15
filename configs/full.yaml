@@ -1,0 +1,29 @@
+# Full run: the configuration actually used for the headline numbers in the
+# README. Sized for one machine (8-core Apple M3, CPU/MPS, 16 GB) -- see
+# docs in README "How to run" for the hardware the numbers were measured on.
+defaults: base
+
+run:
+  name: full
+  tags: [full]
+
+data:
+  n_train: 192
+  n_val: 40
+  n_test: 40
+  synthetic:
+    n_scenes: 34
+    base_size: 384
+    min_objects: 14
+    max_objects: 30
+
+model:
+  seg_head: conv
+  conv_layers: 2
+
+train:
+  mode: linear
+  epochs: 12
+  batch_size: 8
+  lr: 0.001
+  early_stop_patience: 4

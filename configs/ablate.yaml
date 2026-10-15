@@ -1,0 +1,38 @@
+# Config for the label-scarcity ablation sweep (Step 4) and hard-case mining
+# (Step 5).  Sized so the whole grid finishes in a reasonable time on one
+# 8-core Apple M3 without a CUDA GPU; the effective config is recorded in
+# artifacts/results/ablation_summary.json under "config".
+defaults: base
+
+run:
+  name: ablate
+  tags: [ablation]
+
+data:
+  n_train: 160
+  n_val: 40
+  n_test: 40
+  augment: true
+  synthetic:
+    n_scenes: 30
+    base_size: 384
+    min_objects: 14
+    max_objects: 30
+
+model:
+  seg_head: conv
+  conv_layers: 2
+
+train:
+  mode: linear
+  epochs: 8
+  batch_size: 8
+  lr: 0.0015
+  early_stop_patience: 3
+
+ablation:
+  modes: [linear, lora_r4, lora_r16, full]
+  label_fractions: [0.01, 0.05, 0.1, 0.25, 1.0]
+  seeds: [1337, 2024]
+  multiseed_max_fraction: 0.25
+  max_steps: 0

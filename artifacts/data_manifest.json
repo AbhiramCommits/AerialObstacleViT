@@ -1,0 +1,176 @@
+{
+  "source": "synthetic",
+  "root": "/Users/abhiramkasireddi/AerialObstacleViT/artifacts/data/synthetic",
+  "n_train": 24,
+  "n_val": 8,
+  "n_test": 8,
+  "classes": [
+    "background",
+    "paved-area",
+    "grass",
+    "roof",
+    "tree",
+    "water",
+    "person",
+    "vehicle"
+  ],
+  "landable_classes": [
+    "paved-area",
+    "grass"
+  ],
+  "num_classes": 8,
+  "image_size": [
+    224,
+    224
+  ],
+  "native_image_size": [
+    320,
+    320
+  ],
+  "per_class_pixels": {
+    "background": 85205,
+    "paved-area": 394829,
+    "grass": 2991612,
+    "roof": 299914,
+    "tree": 212706,
+    "water": 80676,
+    "person": 6835,
+    "vehicle": 24223
+  },
+  "per_class_pixel_fraction": {
+    "background": 0.020802,
+    "paved-area": 0.096394,
+    "grass": 0.730374,
+    "roof": 0.073221,
+    "tree": 0.05193,
+    "water": 0.019696,
+    "person": 0.001669,
+    "vehicle": 0.005914
+  },
+  "per_class_instances": {
+    "background": 0,
+    "paved-area": 0,
+    "grass": 0,
+    "roof": 103,
+    "tree": 179,
+    "water": 0,
+    "person": 72,
+    "vehicle": 127
+  },
+  "per_split_instances": {
+    "train": {
+      "background": 0,
+      "paved-area": 0,
+      "grass": 0,
+      "roof": 57,
+      "tree": 113,
+      "water": 0,
+      "person": 47,
+      "vehicle": 74
+    },
+    "val": {
+      "background": 0,
+      "paved-area": 0,
+      "grass": 0,
+      "roof": 25,
+      "tree": 33,
+      "water": 0,
+      "person": 11,
+      "vehicle": 25
+    },
+    "test": {
+      "background": 0,
+      "paved-area": 0,
+      "grass": 0,
+      "roof": 21,
+      "tree": 33,
+      "water": 0,
+      "person": 14,
+      "vehicle": 28
+    }
+  },
+  "rare_classes": [
+    "person",
+    "vehicle"
+  ],
+  "rare_definition": {
+    "pixel_fraction_below": 0.01,
+    "dataset_instances_below": 50,
+    "note": "instance rule applies only to classes that carry instance annotations"
+  },
+  "instance_classes": [
+    "roof",
+    "tree",
+    "person",
+    "vehicle"
+  ],
+  "splits": {
+    "train": [
+      "scene_0018",
+      "scene_0033",
+      "scene_0022",
+      "scene_0015",
+      "scene_0027",
+      "scene_0037",
+      "scene_0009",
+      "scene_0035",
+      "scene_0003",
+      "scene_0014",
+      "scene_0012",
+      "scene_0039",
+      "scene_0002",
+      "scene_0005",
+      "scene_0026",
+      "scene_0010",
+      "scene_0028",
+      "scene_0017",
+      "scene_0008",
+      "scene_0020",
+      "scene_0025",
+      "scene_0038",
+      "scene_0016",
+      "scene_0023"
+    ],
+    "val": [
+      "scene_0013",
+      "scene_0031",
+      "scene_0030",
+      "scene_0019",
+      "scene_0036",
+      "scene_0029",
+      "scene_0006",
+      "scene_0011"
+    ],
+    "test": [
+      "scene_0007",
+      "scene_0021",
+      "scene_0032",
+      "scene_0034",
+      "scene_0024",
+      "scene_0004",
+      "scene_0000",
+      "scene_0001"
+    ]
+  },
+  "source_detail": "synthetic procedural fallback (deterministic)",
+  "requested_src": null,
+  "config_source_pref": "auto",
+  "synthetic_cfg": {
+    "n_scenes": 12,
+    "base_size": 320,
+    "min_objects": 8,
+    "max_objects": 16,
+    "glare_prob": 0.25,
+    "blur_prob": 0.25,
+    "haze_prob": 0.25,
+    "altitude_scales": [
+      0.7,
+      1.0,
+      1.4
+    ],
+    "altitude_shift_prob": 0.5,
+    "texture": 0.18,
+    "seed": 1337
+  },
+  "canonical_layout": "images/ masks/ boxes/ meta/ splits.json"
+}

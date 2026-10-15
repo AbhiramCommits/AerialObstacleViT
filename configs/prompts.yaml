@@ -1,0 +1,63 @@
+# Text prompts for the open-vocabulary zero-shot baselines (OWL-ViT and CLIP).
+#
+# Every canonical class gets several templates.  Prompt ensembling averages the
+# text embeddings of all templates for a class, which is the standard trick for
+# stabilising zero-shot performance.  Templates are deliberately written from a
+# *nadir / low-altitude drone* point of view, because that is the deployment
+# regime this benchmark cares about and it is what makes generic web captions
+# ("a car", "a tree") fail.
+
+classes:
+  background:
+    - "an aerial photo of empty featureless ground"
+    - "bare dirt seen from a drone directly above"
+    - "a flat untextured background patch from above"
+    - "gravel and soil texture seen from above"
+
+  paved-area:
+    - "an aerial photo of a paved road"
+    - "asphalt pavement seen from a drone directly above"
+    - "a flat empty parking lot from above"
+    - "a concrete paved area safe for landing"
+    - "a clear flat landing pad on the ground"
+
+  grass:
+    - "an aerial photo of a grassy lawn"
+    - "a green meadow seen from a drone directly above"
+    - "a flat grassy field safe for a helicopter to land"
+    - "a patch of green turf from above"
+
+  roof:
+    - "an aerial photo of a building roof"
+    - "a rooftop seen from a drone directly above"
+    - "a rectangular house roof from above"
+    - "the top of a building viewed from directly overhead"
+
+  tree:
+    - "an aerial photo of a tree canopy"
+    - "treetops seen from a drone directly above"
+    - "a leafy green tree crown from above"
+    - "foliage viewed from directly overhead"
+
+  water:
+    - "an aerial photo of water"
+    - "a pond seen from a drone directly above"
+    - "a swimming pool from above"
+    - "a body of water viewed from overhead"
+
+  person:
+    - "an aerial photo of a person"
+    - "a person seen from a drone directly above"
+    - "a pedestrian viewed from directly overhead"
+    - "a small human figure standing on the ground seen from above"
+
+  vehicle:
+    - "an aerial photo of a car"
+    - "a parked car seen from above"
+    - "a vehicle viewed from a drone directly overhead"
+    - "a rectangular car roof seen from above"
+
+# Used to give OWL-ViT a rejection signal and to build a CLIP background class.
+negative_templates:
+  - "empty ground with nothing on it"
+  - "a texture that contains no object of interest"

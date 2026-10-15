@@ -1,0 +1,58 @@
+# Canonical taxonomy + dataset defaults, shared by every config.
+#
+# The primary target dataset is the Semantic Drone Dataset (ICG, TU Graz), an
+# aerial semantic-segmentation set with 20+ classes.  We remap its native
+# classes onto an 8-class canonical taxonomy that is meaningful for a
+# low-altitude delivery drone: what you can land on, and what you must avoid.
+
+num_classes: 8
+
+classes:
+  - background
+  - paved-area
+  - grass
+  - roof
+  - tree
+  - water
+  - person
+  - vehicle
+
+# Classes considered flat + clear enough to be a candidate landing zone.
+# (grass and paved-area; everything else is an obstacle or not flat.)
+landable_classes:
+  - paved-area
+  - grass
+
+# Classes treated as "rare" if they occupy less than `rare_pixel_threshold` of
+# test pixels OR fewer than `rare_instance_threshold` instances.  Set at runtime
+# from the measured data manifest -- never hard-coded from a paper.
+rare_pixel_threshold: 0.01
+rare_instance_threshold: 50
+
+# Native Semantic Drone Dataset label -> canonical index.
+# SDD ships a class_dict.csv with these names (index order matters).
+sdd_class_map:
+  unlabeled: 0
+  paved-area: 1
+  dirt: 0
+  grass: 2
+  gravel: 1
+  water: 5
+  rocks: 1
+  pool: 5
+  vegetation: 4
+  roof: 3
+  wall: 3
+  window: 3
+  door: 3
+  fence: 0
+  fence-pole: 0
+  person: 6
+  dog: 6
+  car: 7
+  bicycle: 7
+  tree: 4
+  bald-tree: 4
+  ar-marker: 0
+  obstacle: 0
+  conflicting: 0
