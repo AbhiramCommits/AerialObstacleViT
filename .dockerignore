@@ -1,0 +1,23 @@
+# Keep the Docker build context small: the venv alone is ~2 GB and the
+# synthetic dataset is regenerated inside the container.
+.venv/
+venv/
+.git/
+.gitignore
+artifacts/
+data/
+reports/
+tests/
+__pycache__/
+**/__pycache__/
+*.py[cod]
+*.egg-info/
+.ruff_cache/
+.pytest_cache/
+.ccache/
+.coverage
+coverage.xml
+htmlcov/
+.DS_Store
+*.onnx
+*.torchscript

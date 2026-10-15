@@ -186,7 +186,7 @@ def write_comparison(task_run: str | None, cfg: Config) -> Path:
     if task_json:
         rows.append(
             {
-                "method": f"DINOv2+heads ({task_json.get('mode')})",
+                "method": f"DINOv2 (frozen) + {task_json.get('mode')} head",
                 "trainable_params": task_json["adaptation"]["trainable_params"],
                 "total_params": task_json["adaptation"]["total_params"],
                 "trainable_pct": task_json["adaptation"]["trainable_pct"],

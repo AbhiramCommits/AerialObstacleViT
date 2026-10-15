@@ -1,4 +1,4 @@
 method,trainable_params,total_params,trainable_pct,miou,landing_zone_iou,map_50,map_50_95,rare_map_50,rare_classes,ms_per_image,device,n_test,zero_shot,source_artifact
-DINOv2+heads (linear),2083733,24140309,8.6318,0.496733,0.883529,0.365815,0.137895,0.0,person,88.3205,apple-mps (Metal Performance Shaders),40,False,artifacts/results/full_linear
-owlvit (zero-shot),0,153231879,0.0,0.075051,0.665796,0.185348,0.11422,0.00495,person,254.685,apple-mps (Metal Performance Shaders),40,True,artifacts/results/zeroshot_owlvit.json
-clip (zero-shot),0,151277313,0.0,0.075466,0.435039,0.000206,4.5e-05,0.0,person,626.16,apple-mps (Metal Performance Shaders),40,True,artifacts/results/zeroshot_clip.json
+DINOv2 (frozen) + linear head,2083733,24140309,8.6318,0.496733,0.883529,0.365815,0.137895,0.0,person,88.3205,apple-mps (Metal Performance Shaders),40,False,artifacts/results/full_linear
+owlvit (zero-shot),0,153231879,0.0,0.075051,0.665796,0.185348,0.11422,0.00495,person,273.318,apple-mps (Metal Performance Shaders),40,True,artifacts/results/zeroshot_owlvit.json
+clip (zero-shot),0,151277313,0.0,0.075466,0.435039,0.000206,4.5e-05,0.0,person,789.287,apple-mps (Metal Performance Shaders),40,True,artifacts/results/zeroshot_clip.json

@@ -168,9 +168,9 @@
   "device": "apple-mps (Metal Performance Shaders)",
   "split": "test",
   "split_size": 40,
-  "ms_per_image": 626.16,
-  "ms_per_image_median": 621.968,
-  "total_seconds": 25.909,
+  "ms_per_image": 789.287,
+  "ms_per_image_median": 706.368,
+  "total_seconds": 32.309,
   "image_size": [
     224,
     224

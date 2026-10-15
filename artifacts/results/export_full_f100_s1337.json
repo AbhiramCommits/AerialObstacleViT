@@ -1,0 +1,79 @@
+{
+  "run": "full_f100_s1337",
+  "checkpoint": "artifacts/runs/ablation/full_f100_s1337/best.pt",
+  "mode": "full",
+  "image_size": 224,
+  "device_used_for_parity": "cpu",
+  "source_device": "apple-mps (Metal Performance Shaders)",
+  "torchscript": {
+    "max_abs_diff": 0.0,
+    "per_output_max_abs_diff": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "argmax_agreement": 1.0,
+    "miou": 1.0,
+    "tolerance": 0.0001,
+    "passed": true,
+    "path": "/Users/abhiramkasireddi/AerialObstacleViT/artifacts/models/full_f100_s1337.torchscript"
+  },
+  "onnx": {
+    "path": "/Users/abhiramkasireddi/AerialObstacleViT/artifacts/models/full_f100_s1337.onnx",
+    "exporter": "dynamo",
+    "opset": 17,
+    "dynamic_batch": true,
+    "size_bytes": 142026,
+    "external_data_bytes": 96665600,
+    "total_bytes": 96807626,
+    "external_data_file": "/Users/abhiramkasireddi/AerialObstacleViT/artifacts/models/full_f100_s1337.onnx.data",
+    "n_outputs": 7,
+    "output_names": [
+      "seg_logits",
+      "L0_cls",
+      "L0_reg",
+      "L0_obj",
+      "L1_cls",
+      "L1_reg",
+      "L1_obj"
+    ],
+    "onnx_ir_version": 10,
+    "onnxruntime_providers": [
+      "CoreMLExecutionProvider",
+      "AzureExecutionProvider",
+      "CPUExecutionProvider"
+    ],
+    "export_errors": [],
+    "max_abs_diff": 3.052e-05,
+    "per_output_max_abs_diff": [
+      3.052e-05,
+      1.669e-05,
+      1.478e-05,
+      1.216e-05,
+      1.717e-05,
+      2.861e-05,
+      1.478e-05
+    ],
+    "argmax_agreement": 1.0,
+    "miou": 1.0,
+    "tolerance": 0.001,
+    "passed": true
+  },
+  "dynamic_batch_ok": true,
+  "dynamic_batch_error": "",
+  "parameter_summary": {
+    "mode": "full",
+    "lora_impl": null,
+    "lora_modules": [],
+    "total_params": 24140309,
+    "trainable_params": 24140309,
+    "frozen_params": 0,
+    "trainable_pct": 100.0,
+    "head_params": 2083733,
+    "backbone_params": 22056576
+  }
+}
