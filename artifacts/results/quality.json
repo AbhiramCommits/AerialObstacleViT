@@ -1,0 +1,18 @@
+{
+  "tests_passed": 162,
+  "tests_failed": null,
+  "tests_errors": null,
+  "tests_deselected": 2,
+  "tests_collected": 164,
+  "coverage_pct": 72.67,
+  "covered_lines": 2337,
+  "total_statements": 3216,
+  "marker": "not slow",
+  "coverage_target": "aerial_vit",
+  "returncode": 0,
+  "ruff": "clean",
+  "python": "3.11.14",
+  "pytest_command": "/Users/abhiramkasireddi/AerialObstacleViT/.venv/bin/python -m pytest -q -m not slow --cov=aerial_vit --cov-report=term-missing --cov-report=json:/Users/abhiramkasireddi/AerialObstacleViT/coverage.json",
+  "package_version": "0.1.0",
+  "summary_line": ""
+}
