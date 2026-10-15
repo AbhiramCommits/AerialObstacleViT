@@ -1,0 +1,179 @@
+{
+  "miou": 0.075466,
+  "pixel_accuracy": 0.36771,
+  "frequency_weighted_iou": 0.291944,
+  "per_class_iou": {
+    "background": 0.027171,
+    "paved-area": 0.001889,
+    "grass": 0.422004,
+    "roof": 0.0,
+    "tree": 0.152664,
+    "water": 0.0,
+    "person": 0.0,
+    "vehicle": 0.0
+  },
+  "classes_in_eval": 8,
+  "n_pixels": 2007040,
+  "confusion_matrix": [
+    [
+      23685,
+      0,
+      4326,
+      0,
+      2082,
+      0,
+      0,
+      0
+    ],
+    [
+      66177,
+      274,
+      57315,
+      0,
+      20091,
+      0,
+      448,
+      0
+    ],
+    [
+      540155,
+      709,
+      661613,
+      0,
+      100652,
+      0,
+      16960,
+      0
+    ],
+    [
+      166321,
+      0,
+      77449,
+      0,
+      35508,
+      0,
+      0,
+      0
+    ],
+    [
+      43862,
+      0,
+      85601,
+      0,
+      52437,
+      0,
+      0,
+      0
+    ],
+    [
+      11248,
+      0,
+      9273,
+      0,
+      769,
+      0,
+      0,
+      0
+    ],
+    [
+      1748,
+      0,
+      1873,
+      0,
+      387,
+      0,
+      0,
+      0
+    ],
+    [
+      12084,
+      41,
+      11862,
+      0,
+      2090,
+      0,
+      0,
+      0
+    ]
+  ],
+  "class_names": [
+    "background",
+    "paved-area",
+    "grass",
+    "roof",
+    "tree",
+    "water",
+    "person",
+    "vehicle"
+  ],
+  "landing_zone_iou": 0.435039,
+  "landing_zone_f1": 0.60631,
+  "landing_zone_precision": 0.790819,
+  "landing_zone_recall": 0.49161,
+  "landing_zone_accuracy": 0.534186,
+  "landing_zone_tp": 719911,
+  "landing_zone_fp": 190425,
+  "landing_zone_fn": 744483,
+  "landing_zone_tn": 352221,
+  "det_map": 4.5e-05,
+  "det_map_50": 0.000206,
+  "det_map_75": 0.0,
+  "det_n_gt": 893,
+  "det_n_pred": 51,
+  "det_n_images": 40,
+  "det_eval_classes": [
+    "background",
+    "paved-area",
+    "grass",
+    "roof",
+    "tree",
+    "water",
+    "person",
+    "vehicle"
+  ],
+  "det_per_class_ap50": {
+    "background": null,
+    "paved-area": null,
+    "grass": null,
+    "roof": 0.0,
+    "tree": 0.000825,
+    "water": null,
+    "person": 0.0,
+    "vehicle": 0.0
+  },
+  "det_n_gt_per_class": {
+    "background": 0,
+    "paved-area": 0,
+    "grass": 0,
+    "roof": 204,
+    "tree": 332,
+    "water": 0,
+    "person": 97,
+    "vehicle": 260
+  },
+  "rare_classes": [
+    "person"
+  ],
+  "rare_map": 0.0,
+  "rare_map_50": 0.0,
+  "rare_per_class_ap50": {
+    "person": 0.0
+  },
+  "method": "clip",
+  "model_id": "openai/clip-vit-base-patch32",
+  "trainable_params": 0,
+  "total_params": 151277313,
+  "trainable_pct": 0.0,
+  "zero_shot": true,
+  "device": "apple-mps (Metal Performance Shaders)",
+  "split": "test",
+  "split_size": 40,
+  "ms_per_image": 626.16,
+  "ms_per_image_median": 621.968,
+  "total_seconds": 25.909,
+  "image_size": [
+    224,
+    224
+  ],
+  "prompt_file": "configs/prompts.yaml"
+}
