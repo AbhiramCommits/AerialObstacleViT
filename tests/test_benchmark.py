@@ -56,7 +56,9 @@ def test_benchmark_fps_matches_the_batch_formula():
     # the 4-decimal rounding of mean_ms cannot dominate the comparison
     weight = torch.randn(192, 192)
     r = benchmark_callable(lambda x: torch.mm(weight, weight), cfg, "cpu")
-    assert r["fps"] == pytest.approx(4 * r["fps_per_stream"], rel=1e-9)
+    # fps and fps_per_stream are each rounded to 4 decimals, so 4 * fps_per_stream can
+    # differ from fps by up to 4 * 5e-5 + 5e-5 = 2.5e-4 from rounding alone.
+    assert r["fps"] == pytest.approx(4 * r["fps_per_stream"], rel=1e-9, abs=3e-4)
     assert r["fps"] == pytest.approx(1000.0 * 4 / r["mean_ms"], rel=0.05)
     assert r["fps_per_stream"] == pytest.approx(1000.0 / r["mean_ms"], rel=0.05)
     assert r["mean_ms"] >= r["p50_ms"] * 0.5  # sanity: a real measurement

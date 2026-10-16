@@ -36,7 +36,7 @@ import typer
 from aerial_vit.checkpoint import load_checkpoint, load_checkpoint_model
 from aerial_vit.commands._common import ConfigOpt, SetOpt, load_cli_config
 from aerial_vit.config import FIGURES_DIR, RESULTS_DIR, Config
-from aerial_vit.data.semantic_drone import build_datasets
+from aerial_vit.data.semantic_drone import build_datasets, load_manifest
 from aerial_vit.data.transforms import denormalize
 from aerial_vit.eval.hardcases import (
     cluster_embeddings,
@@ -575,7 +575,7 @@ def run_hardcase_retrain(
     and every ``after`` number is re-measured on the untouched test split.
     """
     repeat = 3
-    manifest = json.loads((Path(cfg.run.out_dir) / "data_manifest.json").read_text())
+    manifest = load_manifest(cfg=cfg)
     base_train = list(manifest["splits"]["train"])
     val_names = set(manifest["splits"]["val"])
     extra = [n for n in hard_names if n in val_names]
