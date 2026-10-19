@@ -1,6 +1,6 @@
 {
   "source": "synthetic",
-  "root": "/Users/abhiramkasireddi/AerialObstacleViT/artifacts/data/synthetic",
+  "root": "artifacts/data/synthetic",
   "n_train": 192,
   "n_val": 40,
   "n_test": 40,

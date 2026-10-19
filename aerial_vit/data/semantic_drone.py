@@ -34,7 +34,7 @@ import numpy as np
 import torch
 from torch.utils.data import Dataset
 
-from aerial_vit.config import ARTIFACTS_DIR, Config, DataCfg
+from aerial_vit.config import ARTIFACTS_DIR, REPO_ROOT, Config, DataCfg
 from aerial_vit.data.synthetic import PALETTE
 from aerial_vit.data.transforms import build_eval_transform, build_train_transform
 
@@ -65,7 +65,27 @@ def load_manifest(path: str | Path | None = None, cfg: Config | None = None) -> 
         raise FileNotFoundError(
             f"No data manifest at {p}. Run `python scripts/fetch_data.py --config configs/smoke.yaml` first."
         )
-    return json.loads(p.read_text())
+    manifest = json.loads(p.read_text())
+    if manifest.get("root"):
+        manifest["root"] = str(resolve_manifest_root(manifest["root"]))
+    return manifest
+
+
+def resolve_manifest_root(root: str | Path) -> Path:
+    """Resolve a manifest ``root``; relative roots are relative to the repo root."""
+    root = Path(root)
+    return root if root.is_absolute() else (REPO_ROOT / root).resolve()
+
+
+def portable_manifest_root(root: str | Path) -> str:
+    """Store roots inside the repo as repo-relative POSIX paths so manifests are portable."""
+    root = Path(root)
+    if root.is_absolute():
+        try:
+            return root.resolve().relative_to(REPO_ROOT.resolve()).as_posix()
+        except ValueError:
+            return str(root)
+    return root.as_posix()
 
 
 def build_manifest(
@@ -159,7 +179,10 @@ def build_manifest(
 def write_manifest(manifest: dict[str, Any], path: str | Path) -> Path:
     p = Path(path)
     p.parent.mkdir(parents=True, exist_ok=True)
-    p.write_text(json.dumps(manifest, indent=2) + "\n")
+    out = dict(manifest)
+    if out.get("root"):
+        out["root"] = portable_manifest_root(out["root"])
+    p.write_text(json.dumps(out, indent=2) + "\n")
     return p
 
 
@@ -597,10 +620,12 @@ __all__ = [
     "load_manifest",
     "make_splits",
     "manifest_path",
+    "portable_manifest_root",
     "prepare_semantic_drone",
     "read_boxes",
     "read_meta",
     "read_splits",
+    "resolve_manifest_root",
     "stratified_subsample",
     "write_manifest",
     "write_splits",
